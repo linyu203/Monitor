@@ -1,0 +1,25 @@
+---- getEventType Matches (6 in 6 files) ----
+Event.h (events):21
+	virtual Event_Type getEventType(void)const = 0;
+	const DateTime& getDateTime(void)const{return d_dt;}
+};
+Execute.h (events):22
+    Event_Type getEventType(void)const{return e_EXECUTE;}
+    int orderId(void)const{return d_orderId;}
+    const std::string& client()const{return d_client;}
+invalidExecution.cpp (rules):4
+    if(e_EXECUTE != event->getEventType()){
+        return ;
+        }
+Monitor.cpp:25
+    const Event_Type evType = pEvent->getEventType();
+    if(evType == e_ORDER){
+        shared_ptr<Order> pOrder = dynamic_pointer_cast<Order>(pEvent);
+Order.h (events):22
+    Event_Type getEventType(void)const{return e_ORDER;}
+    int orderId(void)const{return d_orderId;}
+    const std::string& client()const{return d_client;}
+Price.h (events):15
+	Event_Type getEventType(void)const{return e_PRICE;}
+	const std::string& parsekey(void)const{return d_parsekey;}
+	double price()const{return d_price;}
