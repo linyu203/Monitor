@@ -23,7 +23,7 @@ class Time{
   	int d_hour;
 	int d_minute;
 	int d_second;
-	const std::string d_timeString;
+	std::string d_timeString;
 	Time(){};
 	void setTime(const std::string& s);
 	const std::string& getString(void)const{
