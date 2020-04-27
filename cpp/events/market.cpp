@@ -7,7 +7,7 @@ double Market::getPrice(const std::string& s) const{
     }
     return iter->second;
 }
-std::shared_ptr<const Event> Market::getOrder(int orderId) const{
+std::shared_ptr<const Order> Market::getOrder(int orderId) const{
     auto iter = d_orderRecord.find(orderId);
     if(iter == d_orderRecord.end()){
         return nullptr;
