@@ -7,7 +7,7 @@ add_subdirectory(actions)
 add_subdirectory(events)
 add_subdirectory(rules)
 
-add_lirary(libMonitor STATIC parse.cpp monitor.cpp)
+add_library(libMonitor STATIC parse.cpp monitor.cpp)
 target_include_directories(libMonitor PUBLIC .)
 target_link_libraries(libMonitor PUBLIC 
     libUtils
