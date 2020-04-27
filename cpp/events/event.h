@@ -17,7 +17,7 @@ class Event{
 	
   public:
   	Event(const std::string& s):d_dt(s){};
-	virtual ~Event()=0;
+	virtual ~Event(){};
 	virtual Event_Type getEventType(void)const = 0;
 	const DateTime& getDateTime(void)const{return d_dt;}
 };

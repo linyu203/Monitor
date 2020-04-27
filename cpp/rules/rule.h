@@ -19,7 +19,7 @@ class Rule{
   public:
   	Rule(std::vector<std::shared_ptr<Action>>& act, const Market& mkt)
 		:d_actions(act), d_market(mkt){}
-	virtual ~Rule()=0;
+	virtual ~Rule(){};
 	virtual void check(std::shared_ptr<const Event> event) = 0;
 	void takeActions(const std::string& s);
 	const Market& d_market;
