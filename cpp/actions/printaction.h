@@ -6,7 +6,7 @@
 
 class PrintAction : public Action {
   public:
-	void takeAction(const string& s)const;
+	void takeAction(const std::string& s)const;
 };
 
 
