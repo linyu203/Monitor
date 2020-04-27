@@ -8,12 +8,12 @@ from parse import parseString
 class Monitor:
     def __init__(self):
         self.d_rules = initRules()
-        self.d_actsions = initActions()
+        self.d_actions = initActions()
 
     def parse(self, line):
         event = parseString(line)
         if not event:
-            throw Exception("parse string failed")
+            raise Exception("parse string failed")
             
         for r in self.d_rules:
             s = r.check(event)

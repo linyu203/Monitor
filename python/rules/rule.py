@@ -9,7 +9,7 @@ from .dmn import DMN
 
 
 
-def initActions():
+def initRules():
     rules = []
     rules.append(IOR())
     rules.append(EMR())

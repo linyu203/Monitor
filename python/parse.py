@@ -7,16 +7,17 @@ def parseString(line):
     if not fields:
         return None
     evntp = fields[0]
-    if evntp is "PRICE":
+    if evntp == "PRICE":
         if len(fields) != 5:
             return None
         stringdt = fields[1] + "|" + fields[2]
         curdt = dt.strptime(stringdt, "%Y%m%d|%H:%M:%S")
         psk = fields[3]
         price = float(fields[4])
+
         return Event(evntp, curdt, psk, price)
         
-    elif evntp is "ORDER" or "EXECUTE":
+    elif evntp == "ORDER" or  evntp == "EXECUTE":
         if len(fields) != 10:
             return None
         oid = int(fields[1])
@@ -27,7 +28,7 @@ def parseString(line):
         isBuy = fields[6] == "BUY"
         psk = fields[7]
         vol = int(fields[8])
-        if fields[9] is "MKT":
+        if fields[9] == "MKT":
             price = -1.0
         else:
             price = float(fields[9])

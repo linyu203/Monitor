@@ -13,7 +13,7 @@ class APR:
                 return None
             mktPrice = self.d_orderDict[evn.parsekey]
             if mktPrice*2.0 < evn.price or evn.price*2.0 < mktPrice:
-                ss = "A P: {} has executed ${} for '{}', while the market price is ${}"
+                ss = "A P: {} has executed ${:.2f} for '{}', while the market price is ${:.2f}"
                 return ss.format(evn.broker, evn.price, evn.parsekey, mktPrice)
             
         return None

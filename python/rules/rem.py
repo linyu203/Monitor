@@ -26,6 +26,6 @@ class EMR:
             if oEvent.price >= 0 and oEvent.price != evn.price:
                 fields += " price"
             if fields:
-                return "EM: order {} is not matched with the order, mismatched fields: {}".format(evn.orderId, fields)
+                return "EM: order {} is not matched with the order, mismatched fields:{}".format(evn.orderId, fields)
             
         return None

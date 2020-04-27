@@ -15,6 +15,8 @@ class OER:
             odt = self.d_orderDict[evn.orderId][0]
             isMarket = self.d_orderDict[evn.orderId][1] < 0.0
             edt = evn.dateTime
+
+            ss = ""
             
             if isMarket:
                 if odt.date() != edt.date() or (edt-odt).total_seconds() >= 300:

@@ -11,13 +11,17 @@ def main(argv):
         
 
     m = Monitor()
-    with open(argv[1], 'r') as f:
+    with open(argv[0], 'r') as f:
         lines = f.read()
-        for i in lines:
+        lines = lines.split('\n')
+        for line in lines:
+            if not line:
+                break
             try:
-                m.parse(i)
+                m.parse(line)
             except Exception as e:
                 print("skip line with error: {}".format(repr(e)))
+                #return
 
 if __name__ == "__main__":
     main(sys.argv[1:])
