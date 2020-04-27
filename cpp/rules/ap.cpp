@@ -1,9 +1,9 @@
 
 #include <sstream>
 #include <iomanip>
-#include "abnormalprice.h"
+#include "ap.h"
 
-void AbnormalPrice::check(std::shared_ptr<const Event> event){
+void AP::check(std::shared_ptr<const Event> event){
     using namespace std;
     if(e_EXECUTE != event->getEventType()){
         return ;
@@ -14,7 +14,7 @@ void AbnormalPrice::check(std::shared_ptr<const Event> event){
     double mktPrice = d_market.getPrice(psk);
     if(mktPrice > 0.0 && (mktPrice*2.0 < cPrice || mktPrice > 2.0 * cPrice)){
         stringstream ss;
-        ss<<"Abnormal Price: " << pExe->broker() 
+        ss<<"A P: " << pExe->broker() 
         << " has executed $" << fixed << setprecision(2)
         << cPrice << " for '" << psk << "', while the market price is $"
         << mktPrice;

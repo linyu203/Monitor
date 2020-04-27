@@ -6,12 +6,12 @@
 
 #include "rule.h"
 
-class OversizedExecution : public Rule {
+class OSE : public Rule {
   private:
   	std::unordered_map<int, int> d_remainVolume;
   	
   public:
-  	OversizedExecution(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
+  	OSE(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
   	void check(std::shared_ptr<const Event> event);
 };
 

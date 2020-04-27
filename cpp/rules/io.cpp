@@ -1,8 +1,8 @@
 
 #include <sstream>
-#include "invalidexecution.h"
+#include "io.h"
 
-void InvalidExecution::check(std::shared_ptr<const Event> event){
+void IO::check(std::shared_ptr<const Event> event){
     if(e_EXECUTE != event->getEventType()){
         return ;
     }
@@ -10,7 +10,7 @@ void InvalidExecution::check(std::shared_ptr<const Event> event){
     int id = pExe->orderId();
     if(!d_market.getOrder(id)){
         std::stringstream ss;
-        ss<<"Invalid Order: order " << id <<" is not valid";
+        ss<<"I O: order " << id <<" is not valid";
         takeActions(ss.str());
     }
 }

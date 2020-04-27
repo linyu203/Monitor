@@ -2,9 +2,9 @@
 #include <sstream>
 #include <iomanip>
 
-#include "sellforprofit.h"
+#include "sfp.h"
 
-void SellForProfit::check(std::shared_ptr<const Event> event){
+void SFP::check(std::shared_ptr<const Event> event){
     using namespace std;
     if(e_EXECUTE != event->getEventType()){
         return ;
@@ -26,7 +26,7 @@ void SellForProfit::check(std::shared_ptr<const Event> event){
             && (curDt - buyRcd.d_date < 30)) {
             violated = true;
             stringstream ss;
-            ss << "Sell For Profit: order " << pExe->client()
+            ss << "SFP: order " << pExe->client()
                << " Sold '" << pExe->parsekey() << "' within 30 days"
                << " Bought on " << buyRcd.d_date.getString()
                << " at $" << fixed << setprecision(2)

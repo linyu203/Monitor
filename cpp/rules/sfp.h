@@ -14,7 +14,7 @@ struct BuyRecord {
 		d_volume(vol), d_price(p), d_date(d){}
 };
 
-class SellForProfit : public Rule {
+class SFP : public Rule {
   private:
   	std::unordered_map<std::string, std::queue<BuyRecord>> d_data;
 	std::string getKey(std::shared_ptr<const Execute> &exe)const{
@@ -22,7 +22,7 @@ class SellForProfit : public Rule {
     }
 
   public:
-  	SellForProfit(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
+  	SFP(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
   	void check(std::shared_ptr<const Event> event);
 };
 

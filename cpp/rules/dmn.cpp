@@ -2,9 +2,9 @@
 #include <sstream>
 #include <iomanip>
 
-#include "domination.h"
+#include "dmn.h"
 
-void Domination::updateData(const Date& dt){
+void DMN::updateData(const Date& dt){
     if(d_curDate == dt){
         return ;
     }
@@ -16,7 +16,7 @@ void Domination::updateData(const Date& dt){
 }
 
 
-void Domination::check(std::shared_ptr<const Event> event){
+void DMN::check(std::shared_ptr<const Event> event){
     using namespace std;
 
     if(e_EXECUTE != event->getEventType()){
@@ -33,7 +33,7 @@ void Domination::check(std::shared_ptr<const Event> event){
     int cnt = vh.d_qvHis.size();
     if(cnt>0 && curVol*cnt > 1.5 * sum){
         stringstream ss;
-        ss << "Domination: " << pExe->broker() 
+        ss << "D M N: " << pExe->broker() 
            << " has executed over 50% of the average volume for '"
            << pExe->parsekey() << "', the total volume "
            << curVol << ", the average is "

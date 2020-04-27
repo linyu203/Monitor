@@ -2,9 +2,9 @@
 #include <sstream>
 #include <iomanip>
 
-#include "mismatchedexecution.h"
+#include "em.h"
 
-void MismatchedExecution::check(std::shared_ptr<const Event> event){
+void EM::check(std::shared_ptr<const Event> event){
     using namespace std;
 
     if(e_EXECUTE != event->getEventType()){
@@ -39,7 +39,7 @@ void MismatchedExecution::check(std::shared_ptr<const Event> event){
         return ;
     }
     stringstream ss;
-    ss << "Mismatched Execution: order " << id 
+    ss << "EM: order " << id 
     << " is not matched with the order, mismatched fields:"
     << fields;
     takeActions(ss.str());

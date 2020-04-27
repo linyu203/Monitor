@@ -2,10 +2,10 @@
 #include <sstream>
 #include <iomanip>
 
-#include "oversizedexecution.h"
+#include "ose.h"
 
 //d_remainVolume
-void OversizedExecution::check(std::shared_ptr<const Event> event){
+void OSE::check(std::shared_ptr<const Event> event){
     using namespace std;
     if(e_EXECUTE != event->getEventType()){
         return ;
@@ -28,7 +28,7 @@ void OversizedExecution::check(std::shared_ptr<const Event> event){
         }
     }
     stringstream ss;
-    ss << "Oversized Execution: order " << id 
+    ss << "OSE: order " << id 
        << " has been executed oversized by " << pExe->broker();
     takeActions(ss.str());
 }

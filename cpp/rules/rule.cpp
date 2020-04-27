@@ -1,23 +1,23 @@
 
-#include "invalidexecution.h"
-#include "mismatchedexecution.h"
-#include "oversizedexecution.h"
-#include "orderexpired.h"
-#include "sellforprofit.h"
-#include "abnormalprice.h"
-#include "domination.h"
+#include "io.h"
+#include "em.h"
+#include "ose.h"
+#include "ode.h"
+#include "sfp.h"
+#include "ap.h"
+#include "dmn.h"
 
 std::vector<std::shared_ptr<Rule>> initRules(
     std::vector<std::shared_ptr<Action>>& act, 
-    const Market& mkt) {
+    const Market& mkt) {
     std::vector<std::shared_ptr<Rule>> rules;
-    rules.push_back(std::make_shared<InvalidExecution>(act,mkt));
-    rules.push_back(std::make_shared<MismatchedExecution>(act,mkt));
-    rules.push_back(std::make_shared<OversizedExecution>(act,mkt));
-    rules.push_back(std::make_shared<OrderExpired>(act,mkt));
-    rules.push_back(std::make_shared<SellForProfit>(act,mkt));
-    rules.push_back(std::make_shared<AbnormalPrice>(act,mkt));
-    rules.push_back(std::make_shared<Domination>(act,mkt));
+    rules.push_back(std::make_shared<IO>(act,mkt));
+    rules.push_back(std::make_shared<EM>(act,mkt));
+    rules.push_back(std::make_shared<OSE>(act,mkt));
+    rules.push_back(std::make_shared<ODE>(act,mkt));
+    rules.push_back(std::make_shared<SFP>(act,mkt));
+    rules.push_back(std::make_shared<AP>(act,mkt));
+    rules.push_back(std::make_shared<DMN>(act,mkt));
     return rules;
 }
 

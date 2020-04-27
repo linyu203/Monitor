@@ -3,9 +3,9 @@
 
 #include "rule.h"
 
-class OrderExpired : public Rule {
+class ODE : public Rule {
   public:
-  	OrderExpired(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
+  	ODE(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
   	void check(std::shared_ptr<const Event> event);
 };
 

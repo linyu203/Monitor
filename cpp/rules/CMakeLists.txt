@@ -1,13 +1,13 @@
 
 add_library(libRules STATIC 
 	rule.cpp 
-	abnormalprice.cpp 
-	invalidexecution.cpp
-	domination.cpp
-	mismatchedexecution.cpp
-	orderexpired.cpp
-	oversizedexecution.cpp
-	sellforprofit.cpp
+	ap.cpp 
+	io.cpp
+	dmn.cpp
+	em.cpp
+	ode.cpp
+	ose.cpp
+	sfp.cpp
 )
 
 target_include_directories(libRules PUBLIC .)

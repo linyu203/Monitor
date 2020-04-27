@@ -2,9 +2,9 @@
 #include <sstream>
 #include <iomanip>
 
-#include "orderexpired.h"
+#include "ode.h"
 
-void OrderExpired::check(std::shared_ptr<const Event> event){
+void ODE::check(std::shared_ptr<const Event> event){
     using namespace std;
 
     if(e_EXECUTE != event->getEventType()){
@@ -23,7 +23,7 @@ void OrderExpired::check(std::shared_ptr<const Event> event){
     bool isMKT = (pOrder->price() < 0.0);
     if(dtExe != dtOrder || (isMKT && (tmExe-tmOrder) >= 300)){
         stringstream ss;
-        ss << "Order Expired: " << (isMKT ? "Market" : "Limit") 
+        ss << "ODE: " << (isMKT ? "Market" : "Limit") 
         << " order expired, order was placed on " << dtOrder.getString()
         << " at " << tmOrder.getString() << " executed on "
         << dtExe.getString() << " at " << tmExe.getString();

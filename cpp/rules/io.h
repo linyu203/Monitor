@@ -3,9 +3,9 @@
 
 #include "rule.h"
 
-class InvalidExecution : public Rule {
+class IO : public Rule {
   public:
-  	InvalidExecution(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
+  	IO(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
   	void check(std::shared_ptr<const Event> event);
 };
 

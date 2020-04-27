@@ -1,5 +1,5 @@
-#ifndef INCLUDED_DOMINATION_H
-#define INCLUDED_DOMINATION_H
+#ifndef INCLUDED_DMN_H
+#define INCLUDED_DMN_H
 
 #include "rule.h"
 #include <queue>
@@ -28,7 +28,7 @@ struct VolumeHistory{
 	}
 };
 
-class Domination : public Rule {
+class DMN : public Rule {
   private:
   	Date d_curDate;
     std::unordered_map<std::string, int>d_currentVol;
@@ -39,7 +39,7 @@ class Domination : public Rule {
     }
 	
   public:
-  	Domination(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
+  	DMN(std::vector<std::shared_ptr<Action>>& act, const Market& mkt):Rule(act,mkt){}
   	void check(std::shared_ptr<const Event> event);
 };
 
