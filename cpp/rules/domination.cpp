@@ -34,7 +34,7 @@ void Domination::check(std::shared_ptr<const Event> event){
     if(cnt>0 && curVol*cnt > 1.5 * sum){
         stringstream ss;
         ss << "Domination: " << pExe->broker() 
-           << "has executed over 50% of the average volume for '"
+           << " has executed over 50% of the average volume for '"
            << pExe->parsekey() << "', the total volume "
            << curVol << ", the average is "
            << fixed << setprecision(2) << (sum*1.0/cnt);

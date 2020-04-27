@@ -30,7 +30,7 @@ void Date::setDate(const std::string& s){
         d_dateString = to_string(d_day);
     }
     d_dateString += g_MonthName[d_month];
-    d_dateString = to_string(d_year);
+    d_dateString += to_string(d_year);
 }
 
 void Time::setTime(const std::string& s){
@@ -73,12 +73,12 @@ int operator- (const Date& cur, const Date& o_dt){
     if(isLeapYear(edy) && edm>=3){
         eddays++;
     }
-    while(std<edy){
+    while(sty<edy){
         eddays += 365;
-        if(isLeapYear(std)){
+        if(isLeapYear(sty)){
             eddays++;
         }
-        std++;
+        sty++;
     }
     return eddays - stdays;
 }

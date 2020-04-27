@@ -20,7 +20,7 @@ void OrderExpired::check(std::shared_ptr<const Event> event){
     Date dtOrder = pOrder->getDateTime().d_date;
     Time tmExe = pExe->getDateTime().d_time;
     Time tmOrder = pOrder->getDateTime().d_time;
-    bool isMKT = (pOrder->price()<0.0);
+    bool isMKT = (pOrder->price() < 0.0);
     if(dtExe != dtOrder || (isMKT && (tmExe-tmOrder) >= 300)){
         stringstream ss;
         ss << "Order Expired: " << (isMKT ? "Market" : "Limit") 

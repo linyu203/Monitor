@@ -22,10 +22,10 @@ class Date{
 		return !(*this == o_dt);
 	}
 	friend bool operator< (const Date& cur, const Date& o_dt){
-		if(cur.d_year < o_dt.d_year)
-			return true;
-		if(cur.d_month < o_dt.d_month)
-			return true;
+		if(cur.d_year != o_dt.d_year)
+			return cur.d_year < o_dt.d_year;
+		if(cur.d_month != o_dt.d_month)
+			return cur.d_month < o_dt.d_month;
 		return cur.d_day < o_dt.d_day;
 		
 	}

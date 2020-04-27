@@ -40,7 +40,7 @@ void MismatchedExecution::check(std::shared_ptr<const Event> event){
     }
     stringstream ss;
     ss << "Mismatched Execution: order " << id 
-    << "is not matched with the order, mismatched fields:"
+    << " is not matched with the order, mismatched fields:"
     << fields;
     takeActions(ss.str());
 }

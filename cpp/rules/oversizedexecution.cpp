@@ -29,7 +29,7 @@ void OversizedExecution::check(std::shared_ptr<const Event> event){
     }
     stringstream ss;
     ss << "Oversized Execution: order " << id 
-       << "has been executed oversized by " << pExe->broker();
+       << " has been executed oversized by " << pExe->broker();
     takeActions(ss.str());
 }
 
