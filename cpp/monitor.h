@@ -22,11 +22,11 @@ class Monitor {
     std::vector<std::shared_ptr<Action>> d_actions;
 	std::vector<std::shared_ptr<Rule>> d_rules;
 
-    void checkRules(std::shared_ptr<Event> event);
+    void checkRules(std::shared_ptr<const Event> event);
 	
   public:
   	Monitor();
-	void parseEvent(const string& s);
+	void parseEvent(const std::string& s);
 };
 
 #endif

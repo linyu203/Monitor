@@ -1,13 +1,14 @@
 #include "monitor.h"
 #include <fstream>
 #include <string>
+#include <iostream>
 
 
 
 int main(int args, char * arv[]){
     using namespace std;
     if(args != 2){
-        reutrn 1;
+        return 1;
     }
     ifstream f(arv[1]);
     if(!f.is_open()){

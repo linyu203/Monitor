@@ -8,7 +8,7 @@
 class Action {
   public:
   	virtual ~Action()=0;
-	void takeAction(const std::string& s)const = 0;
+	virtual void takeAction(const std::string& s)const = 0;
 };
 std::vector<std::shared_ptr<Action>> initActions(void);
 

@@ -16,7 +16,7 @@ void Monitor::checkRules(std::shared_ptr<const Event> event){
 }
 
 
-void Monitor::parseEvent(const string& s){
+void Monitor::parseEvent(const std::string& s){
     using namespace std;
     shared_ptr<Event> pEvent = parse(s);
     if(pEvent == nullptr){
