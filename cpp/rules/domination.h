@@ -1,5 +1,5 @@
-#ifndef INCLUDED_MISMATCHED_EXECUTION_H
-#define INCLUDED_MISMATCHED_EXECUTION_H
+#ifndef INCLUDED_DOMINATION_H
+#define INCLUDED_DOMINATION_H
 
 #include "rule.h"
 #include <queue>
