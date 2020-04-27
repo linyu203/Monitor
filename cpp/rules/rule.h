@@ -5,7 +5,11 @@
 #include <memory>
 #include <vector>
 
-#include "../events/event.h"
+#include "../events/market.h"
+#include "../events/execute.h"
+
+#include "../actions/action.h"
+
 
 
 class Rule{
