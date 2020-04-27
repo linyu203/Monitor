@@ -1,0 +1,24 @@
+I O: order 0 is not valid
+EM: order 1 is not matched with the order, mismatched fields: client broker type parsekey volume price
+OSE: order 1 has been executed oversized by BROKER2
+EM: order 2 is not matched with the order, mismatched fields: client
+EM: order 3 is not matched with the order, mismatched fields: broker
+EM: order 4 is not matched with the order, mismatched fields: type
+EM: order 5 is not matched with the order, mismatched fields: parsekey
+EM: order 6 is not matched with the order, mismatched fields: volume
+OSE: order 6 has been executed oversized by BROKER1
+EM: order 7 is not matched with the order, mismatched fields: price
+OSE: order 9 has been executed oversized by BROKER1
+ODE: Limit order expired, order was placed on 11FEB2020 at 23:59:30 executed on 12FEB2020 at 00:00:30
+ODE: Market order expired, order was placed on 13FEB2020 at 12:23:30 executed on 13FEB2020 at 12:28:30
+ODE: Market order expired, order was placed on 15FEB2020 at 12:23:30 executed on 15FEB2020 at 12:28:31
+ODE: Market order expired, order was placed on 16FEB2020 at 23:59:30 executed on 17FEB2020 at 00:00:30
+SFP: order CLIENT1 Sold 'SECURITY' within 30 days Bought on 01MAR2020 at $100.10 sold on 20MAR2020 at $100.20
+SFP: order CLIENT1 Sold 'SECURITY' within 30 days Bought on 05MAR2020 at $100.20 sold on 01APR2020 at $100.30
+A P: BROKER1 has executed $100.20 for 'SECURITY', while the market price is $50.00
+A P: BROKER1 has executed $24.50 for 'SECURITY', while the market price is $50.00
+A P: BROKER1 has executed $25.00 for 'SECURITY', while the market price is $50.00
+A P: BROKER1 has executed $100.00 for 'SECURITY', while the market price is $50.00
+D M N: BROKER1 has executed over 50% of the average volume for 'SECURITY', the total volume 100, the average is 30.00
+D M N: BROKER1 has executed over 50% of the average volume for 'SECURITY', the total volume 200, the average is 53.33
+D M N: BROKER1 has executed over 50% of the average volume for 'SECURITY', the total volume 200, the average is 90.00
