@@ -15,6 +15,21 @@ class Date{
 	const std::string& getString(void)const{
 		return d_dateString;
 	}
+	bool operator== (const Date& o_dt){
+		return o_dt.d_dateString == this->d_dateString;
+	}
+	bool operator!= (const Date& o_dt){
+		return !(*this == o_dt);
+	}
+	bool operator< (const Date& o_dt){
+		if(this->d_year < o_dt.d_year)
+			return true;
+		if(this->d_month < o_dt.d_month)
+			return true;
+		return this->d_day < o_dt.d_day;
+		
+	}
+	int operator- (const Date& o_dt);
 };
 
 
@@ -29,7 +44,13 @@ class Time{
 	const std::string& getString(void)const{
 		return d_timeString;
 	}
-
+	bool operator== (const Time& o_tm){
+		return o_tm.d_timeString == this->d_timeString;
+	}
+	bool operator!= (const Time& o_tm){
+		return !(*this == o_tm);
+	}
+    int operator- (const Time& o_tm);
 };
 
 class DateTime{

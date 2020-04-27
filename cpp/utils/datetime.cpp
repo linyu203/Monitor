@@ -41,3 +41,53 @@ void Time::setTime(const std::string& s){
     d_second = stoi(s.substr(6,2));
 }
 
+bool isLeapYear(int year){
+    if(year%400 == 0){
+        return true;
+    }
+    if(year%100 == 0){
+        return false;
+    }
+    return year%4==0;
+}
+
+const int g_countMonth[13] = {
+    0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334,
+}
+
+int operator- (const Date& o_dt){
+    if(*this < o_dt){
+        return -1;
+    }
+    int sty = o_dt.d_year;
+    int stm = o_dt.d_month;
+    int std = o_dt.d_day;
+    int edy = this->d_year;
+    int edm = this->d_month;
+    int edd = this->d_day;
+    int stdays = std + g_countMonth[stm];
+    if(isLeapYear(sty) && stm>=3){
+        stdays++;
+    }
+    int eddays = edd + g_countMonth[edm];
+    if(isLeapYear(edy) && edm>=3){
+        eddays++;
+    }
+    while(std<edy){
+        eddays += 365;
+        if(isLeapYear(std)){
+            eddays++;
+        }
+        std++;
+    }
+    return eddays - stdays;
+}
+
+int Time::operator- (const Time& o_tm){
+    int dh = this->d_hour - o_tm.d_hour;
+    int dm = this->d_minute - o_tm.d_minute;
+    int ds = this->d_second - o_tm.d_second;
+    return dh*3600+dm*60+ds;
+}
+
+
