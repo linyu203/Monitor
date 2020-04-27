@@ -1,6 +1,6 @@
 #include "abnormalprice.h"
 
-void InvalidExecution::check(std::shared_ptr<const Event> event){
+void AbnormalPrice::check(std::shared_ptr<const Event> event){
     if(e_EXECUTE != event->getEventType()){
         return ;
     }

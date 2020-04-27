@@ -1,4 +1,4 @@
-#include "invalidexecution.h"
+#include "abnormalprice.h"
 
 void InvalidExecution::check(std::shared_ptr<const Event> event){
     if(e_EXECUTE != event->getEventType()){
@@ -7,7 +7,7 @@ void InvalidExecution::check(std::shared_ptr<const Event> event){
     std::shared_ptr<Execute> pExe = std::dynamic_pointer_cast<Execute>(event);
     int id = pExe->orderId();
     if(!d_market.getOrder(id)){
-        takeActions("Order Id: " + std::to_string(id) + " is not valid");
+        takeActions("Order id:" + std::to_string(id) + " is not valid");
     }
 }
 
