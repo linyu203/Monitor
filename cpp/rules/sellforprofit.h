@@ -17,7 +17,7 @@ struct BuyRecord {
 class SellForProfit : public Rule {
   private:
   	std::unordered_map<std::string, std::queue<BuyRecord>> d_data;
-	std::string getKey(std::shared_ptr<Execute> &exe)const{
+	std::string getKey(std::shared_ptr<const Execute> &exe)const{
 		return exe->client() + "|" + exe->parsekey();
     }
 

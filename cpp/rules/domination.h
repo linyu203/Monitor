@@ -2,6 +2,9 @@
 #define INCLUDED_MISMATCHED_EXECUTION_H
 
 #include "rule.h"
+#include <queue>
+#include <unordered_map>
+
 
 struct VolumeHistory{
     int d_sum;
@@ -9,7 +12,7 @@ struct VolumeHistory{
 	std::queue<int>d_qvHis;
 	VolumeHistory(){}
 	void update(void){
-		if(curVol == 0){
+		if(d_curVol == 0){
 			return;
 	    }
 		d_sum += d_curVol;
@@ -31,7 +34,7 @@ class Domination : public Rule {
     std::unordered_map<std::string, int>d_currentVol;
 	std::unordered_map<std::string, VolumeHistory>d_volHis;
 	void updateData(const Date& dt);
-	std::string getKey(std::shared_ptr<Execute> &exe)const{
+	std::string getKey(std::shared_ptr<const Execute> &exe)const{
 		return exe->broker() + "|" + exe->parsekey();
     }
 	

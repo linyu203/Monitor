@@ -21,15 +21,15 @@ class Date{
 	bool operator!= (const Date& o_dt){
 		return !(*this == o_dt);
 	}
-	bool operator< (const Date& o_dt){
-		if(this->d_year < o_dt.d_year)
+	friend bool operator< (const Date& cur, const Date& o_dt){
+		if(cur.d_year < o_dt.d_year)
 			return true;
-		if(this->d_month < o_dt.d_month)
+		if(cur.d_month < o_dt.d_month)
 			return true;
-		return this->d_day < o_dt.d_day;
+		return cur.d_day < o_dt.d_day;
 		
 	}
-	int operator- (const Date& o_dt);
+	friend int operator- (const Date& cur, const Date& o_dt);
 };
 
 

@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iomanip>
 
-#include "mismatchedexecution.h"
+#include "orderexpired.h"
 
 void OrderExpired::check(std::shared_ptr<const Event> event){
     using namespace std;
@@ -26,7 +26,7 @@ void OrderExpired::check(std::shared_ptr<const Event> event){
         ss << "Order Expired: " << (isMKT ? "Market" : "Limit") 
         << " order expired, order was placed on " << dtOrder.getString()
         << " at " << tmOrder.getString() << " executed on "
-        << dtExe.getString() << " at " << tmExe.getString()
+        << dtExe.getString() << " at " << tmExe.getString();
         takeActions(ss.str());
     }
 }

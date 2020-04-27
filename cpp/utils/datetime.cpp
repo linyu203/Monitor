@@ -53,18 +53,18 @@ bool isLeapYear(int year){
 
 const int g_countMonth[13] = {
     0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334,
-}
+};
 
-int operator- (const Date& o_dt){
-    if(*this < o_dt){
+int operator- (const Date& cur, const Date& o_dt){
+    if(cur < o_dt){
         return -1;
     }
     int sty = o_dt.d_year;
     int stm = o_dt.d_month;
     int std = o_dt.d_day;
-    int edy = this->d_year;
-    int edm = this->d_month;
-    int edd = this->d_day;
+    int edy = cur.d_year;
+    int edm = cur.d_month;
+    int edd = cur.d_day;
     int stdays = std + g_countMonth[stm];
     if(isLeapYear(sty) && stm>=3){
         stdays++;
