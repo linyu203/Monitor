@@ -1,9 +1,9 @@
 # Monitor
-##Monitor
+## Monitor
 The project was designed to practice building a C++ project associate with the design pattern, and polymophic features.
 Here, also implememt the project with the Golang and Python, to familize and improve the Python and Golang.
 
-###Description
+### Description
 MonitorProj is trying to build a application to monitor the market transection records, and to check if there are any rules were violated by reading the event records,
 the events has 3 types:
 PRICE:    PRICE|DATE|TIME|PARSEKEY|PRICE
