@@ -1,8 +1,8 @@
 echo $1
-$1 ./invalidexecution.dat
-$1 ./mismatched.dat
-$1 ./oversized.dat
-$1 ./orderExpired.dat
-$1 ./sellforprofit.dat
-$1 ./abnormalprice.dat
-$1 domination.dat
+$1 ./io.dat
+$1 ./em.dat
+$1 ./ose.dat
+$1 ./ode.dat
+$1 ./sfp.dat
+$1 ./ap.dat
+$1 dmn.dat
