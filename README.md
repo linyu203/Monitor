@@ -26,5 +26,5 @@ should easily adding new rules, and the actions should be easily to switch
 - rule 7. dmn: a broker has deal over 50% of the average trancetion for a security
 + rule 8. wildcare rules: any rule could be added into, should support to add new rules
 
-To run the tool:
+### To run the tool:
 ...$ ./monitorProj ../testCase/dmn.dat
