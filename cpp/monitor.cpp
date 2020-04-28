@@ -26,11 +26,13 @@ void Monitor::parseEvent(const std::string& s){
     if(evType == e_ORDER){
         shared_ptr<Order> pOrder = dynamic_pointer_cast<Order>(pEvent);
         d_market.addOrder(pOrder->orderId(), pOrder);
+	checkRules(pEvent);
     }else if(evType == e_EXECUTE){
         checkRules(pEvent);
     }else if(evType == e_PRICE){
         shared_ptr<Price> pPrice = dynamic_pointer_cast<Price>(pEvent);
         d_market.setPrice(pPrice->parsekey(), pPrice->price());
+	checkRules(pEvent);
     }else{
         throw invalid_argument("event type not support!");
     }
