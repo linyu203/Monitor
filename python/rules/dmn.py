@@ -1,7 +1,7 @@
 from event import Event
 
 
-class HisVolum:
+class HisVolume:
     def __init__(self):
         self.d_sum = 0
         self.d_curVol = 0
@@ -18,8 +18,8 @@ class HisVolum:
         self.d_curVol = 0
         if len(self.d_hisVol) == 5:
             self.d_sum -= self.d_hisVol[0]
-            self.d_hisVol.remove(0)
-        return true;
+            self.d_hisVol.pop(0)
+        return True;
 
     def getSumAndCnt(self):
         return self.d_sum, len(self.d_hisVol)
@@ -46,14 +46,19 @@ class DMN:
             return None
 
         curDate = evn.dateTime.date()
-        updateHis(curDate)
+        self.updateHis(curDate)
         key = evn.broker + "|" + evn.parsekey
-        tVol = self.d_curVolDict[key] += evn.volume
+        if key not in self.d_curVolDict:
+            self.d_curVolDict[key] = 0
+        self.d_curVolDict[key] += evn.volume
+        tVol = self.d_curVolDict[key] 
+        if evn.parsekey not in self.d_hisVolDict:
+            self.d_hisVolDict[evn.parsekey] = HisVolume()
         self.d_hisVolDict[evn.parsekey].increment(evn.volume)
-        sum, cnt = self.d_hisVolDict[evn.parsekey].getSumAndCnt()
-        if cnt>0 and cnt * tVol > 1.5 * sum:
+        tsum, cnt = self.d_hisVolDict[evn.parsekey].getSumAndCnt()
+        if cnt>0 and cnt * tVol > 1.5 * tsum:
             ss = "D M N: {} has executed over 50% of the average volume for '{}', the total volume {}, the average is {:.2f}"
-            ss = ss.format(evn.broker, evn.parsekey, tVol, sum/cnt)
+            ss = ss.format(evn.broker, evn.parsekey, tVol, tsum/cnt)
             return ss
             
         return None

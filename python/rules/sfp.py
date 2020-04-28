@@ -7,7 +7,7 @@ class SFP:
     def check(self, evn):
         if evn.eventType != "EXECUTE":
             return None
-        key = evn.client + "|" + evn.parsekey
+        key = evn.client + "|" + evn.parsekey
         ss = ''
         if evn.isBuy:
             if key not in self.d_buyDict:
@@ -20,21 +20,21 @@ class SFP:
             curVol = evn.volume
             curDate = evn.dateTime.date()
             curPrice = evn.price
-            while curVol > 0 && ll:
+            while curVol > 0 and ll:
                 l0 = ll[0]
-                if ss == '' and l0[0] < curPrice and curDate - l0[1] < 30:
+                if ss == '' and l0[0] < curPrice and (curDate - l0[1]).days < 30:
                     "SFP: order CLIENT1 Sold 'SECURITY' within 30 days Bought on 01MAR2020 at $100.10 sold on 20MAR2020 at $100.20"
                     ss = "SFP: order {} Sold '{}' within 30 days Bought on {} at ${:.2f} sold on {} at ${:.2f}"
                     ss = ss.format(evn.client, evn.parsekey, l0[1].strftime("%d%b%Y").upper(), l0[0],
                                    curDate.strftime("%d%b%Y").upper(), curPrice)
                 if curVol >= l0[2]:
                     curVol -= l0[2]
-                    ll.remove(0)
+                    ll.pop(0)
                 else:
                     l0[2] -= curVol
                     ll[0] = l0
                     break
                     
-           self.d_buyDict[key] = ll
+            self.d_buyDict[key] = ll
            
         return ss
