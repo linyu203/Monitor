@@ -17,16 +17,16 @@ func (m*Monitor)Init(){
 func (m*Monitor)MparseLine(line string)string{
     event,rb := ParseLine(line)
     if rb == false {
-	return "Parse line failed"
+        return "Parse line failed"
     }
     for _, rule := range m.d_rules {
-	ts := rule.CheckEvent(&event)
-	if len(ts) == 0{
-	    continue
-	}
-	for _,act := range m.d_actions {
-	    act.TakeAction(ts)
-	}
+        ts := rule.CheckEvent(&event)
+        if len(ts) == 0 {
+            continue
+        }
+        for _,act := range m.d_actions {
+            act.TakeAction(ts)
+        }
     }
     return ""
 }

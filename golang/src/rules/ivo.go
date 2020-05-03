@@ -13,13 +13,13 @@ func InitRivo()Rule{
     riv.ord = make(map[int]int)
     return &riv
 }
-func (rivo *Rivo) CheckEvent(evn *ev.Event) string{
+func (r *Rivo) CheckEvent(evn *ev.Event) string{
     if evn.EventType == ev.EVENT_ORDER {
-	rivo.ord[evn.OrderId] = evn.OrderId
+        r.ord[evn.OrderId] = evn.OrderId
     } else if evn.EventType == ev.EVENT_EXECUTE {
-	if _,ok := rivo.ord[evn.OrderId]; !ok {
-	    return fmt.Sprintf("IVO: the order %v is not valid",evn.OrderId)
-	}
+        if _,ok := r.ord[evn.OrderId]; !ok {
+            return fmt.Sprintf("I O: order %v is not valid",evn.OrderId)
+        }
     }
     return ""
 }

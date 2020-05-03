@@ -10,13 +10,13 @@ func main(){
     args := os.Args
     if len(args) != 2{
         fmt.Println("to run the app: ./app <filename>")
-	return 
+        return 
     }
     fileName := args[1]
     readFile, err := os.Open(fileName)
     if err != nil {
-	fmt.Println("Open file failed, file name:", fileName)
-	return 
+        fmt.Println("Open file failed, file name:", fileName)
+        return 
     }
     fileScanner := io.NewScanner(readFile)
     fileScanner.Split(io.ScanLines)
@@ -24,10 +24,10 @@ func main(){
     m := &Monitor{}
     m.Init()
     for fileScanner.Scan() {
-	line := fileScanner.Text()
-	ts := m.MparseLine(line)
-	if len(ts)>0 {
-		fmt.Println(ts, "Event :", line)
-	}
+        line := fileScanner.Text()
+        ts := m.MparseLine(line)
+        if len(ts)>0 {
+            fmt.Println(ts, "Event :", line)
+        }
     }
 }
