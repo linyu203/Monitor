@@ -6,7 +6,7 @@ import (
     io "bufio"
 )
 func main(){
-    fmt.Println("Monitor Project")
+    //fmt.Println("Monitor Project")
     args := os.Args
     if len(args) != 2{
         fmt.Println("to run the app: ./app <filename>")

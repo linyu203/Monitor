@@ -54,7 +54,7 @@ func ParseLine(line string)(ev.Event,bool){
         return ev.InitOrder(oid,&dt,vs[4],vs[5],ib,vs[7],vol,pri)
     }
     } else if vs[0] == "PRICE" {
-        dt,br := getDateTime(vs[1]+"|"+vs[2])
+        dt,br := getDateTime(vs[1]+"T"+vs[2])
         if br == false {
             return ev.Event{},false
         }

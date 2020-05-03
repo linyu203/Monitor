@@ -3,7 +3,7 @@ package rule
 import (
     ev "events"
     "fmt"
-    "time"
+    //"time"
     ss "strings"
 )
 
@@ -24,8 +24,8 @@ func (r *Roe) CheckEvent(evn *ev.Event) string{
             return ""
         }
         var isMkt bool = pev.Price <0.0
-        ot := pev.EventTime
-        et := evn.EventTime
+        ot := &pev.EventTime
+        et := &evn.EventTime
         y1,m1,d1 := ot.Date()
         y2,m2,d2 := et.Date()
         lo := "02 Jan 2006 at 15:04:05"
