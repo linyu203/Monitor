@@ -75,7 +75,7 @@ func (r *Rsfp) CheckEvent(evn *ev.Event) (sr string){
         if(curVol >= pav.rmVol){
             curVol -= pav.rmVol
             plist.Remove(curl)
-	    curl = plist.Front()
+            curl = plist.Front()
         } else {
             pav.rmVol -= curVol
             break
