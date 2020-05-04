@@ -3,7 +3,6 @@ package rule
 import (
     ev "events"
     "fmt"
-    //"time"
     ss "strings"
 )
 
@@ -29,7 +28,7 @@ func (r *Roe) CheckEvent(evn *ev.Event) string{
         y1,m1,d1 := ot.Date()
         y2,m2,d2 := et.Date()
         lod := "02Jan2006"
-	lot := "15:04:05"
+        lot := "15:04:05"
         if !(y1 == y2 && m1 == m2 && d1 == d2) ||
            (isMkt && et.Sub(*ot).Seconds()>=300) {
             if (isMkt){

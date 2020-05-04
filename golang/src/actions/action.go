@@ -13,11 +13,11 @@ type fmtPrintAction struct{
 func (fpa * fmtPrintAction) TakeAction(msg string){
     fmt.Println(msg)
 }
+
 func InitAllActions() []Action{
     var actions []Action
     var fpa Action = &fmtPrintAction{}
     actions = append(actions, fpa)
-
 
     return actions
 }

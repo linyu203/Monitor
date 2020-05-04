@@ -18,7 +18,7 @@ func (r *Rivo) CheckEvent(evn *ev.Event) string{
         r.ord[evn.OrderId] = evn.OrderId
     } else if evn.EventType == ev.EVENT_EXECUTE {
         if _,ok := r.ord[evn.OrderId]; !ok {
-            return fmt.Sprintf("I O: order %v is not valid",evn.OrderId)
+            return fmt.Sprintf("I O: order %v is not valid", evn.OrderId)
         }
     }
     return ""

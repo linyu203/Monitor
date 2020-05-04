@@ -9,7 +9,7 @@ func main(){
     //fmt.Println("Monitor Project")
     args := os.Args
     if len(args) != 2 {
-        fmt.Println("to run the app: ./app <filename>")
+        fmt.Println("To run the app: ./app <filename>")
         return 
     }
     fileName := args[1]
@@ -20,7 +20,6 @@ func main(){
     }
     fileScanner := io.NewScanner(readFile)
     fileScanner.Split(io.ScanLines)
-
     m := &Monitor{}
     m.Init()
     for fileScanner.Scan() {

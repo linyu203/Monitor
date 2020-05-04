@@ -9,9 +9,9 @@ type Rov struct{
     ord map[int]int
 }
 func InitRov()Rule{
-    riv := Rov{}
-    riv.ord = make(map[int]int)
-    return &riv
+    rov := Rov{}
+    rov.ord = make(map[int]int)
+    return &rov
 }
 func (r *Rov) CheckEvent(evn *ev.Event) string{
     if evn.EventType == ev.EVENT_ORDER {

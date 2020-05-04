@@ -4,7 +4,6 @@ import (
     tm "time"
 )
 
-
 type EVENT_TYPE uint8
 const (
     _              =   iota
@@ -33,7 +32,6 @@ func InitPrice(dt *tm.Time, sec string, pri float64) (Event,bool){
         Price:     pri,
     },true
 }
-
 func InitOrder(oid int, dt *tm.Time, cli , bro string, ib bool, sec string, vol int, pri float64) (Event,bool){
     return Event{
         EventType: EVENT_ORDER,
@@ -47,7 +45,6 @@ func InitOrder(oid int, dt *tm.Time, cli , bro string, ib bool, sec string, vol 
         Price:     pri,
     },true
 }
-
 func InitExecute(oid int, dt *tm.Time, cli , bro string, ib bool, sec string, vol int, pri float64) (Event,bool){
     return Event{
         EventType: EVENT_EXECUTE,
@@ -61,4 +58,3 @@ func InitExecute(oid int, dt *tm.Time, cli , bro string, ib bool, sec string, vo
         Price:     pri,
     },true
 }
-
