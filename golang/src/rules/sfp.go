@@ -5,6 +5,7 @@ import (
     "fmt"
     "time"
     lst "container/list"
+    ss "strings"
 )
 
 type buyRcd struct{
@@ -70,7 +71,7 @@ func (r *Rsfp) CheckEvent(evn *ev.Event) (sr string){
         }
         if len(sr) == 0 && pav.price < curPri && getDiffDays(&curDate, &pav.dt) < 30{
             sr = fmt.Sprintf("SFP: order %v Sold '%v' within 30 days Bought on %v at $%.2f sold on %v at $%.2f",
-                 evn.Client, evn.Security, pav.dt.Format(lo), pav.price, curDate.Format(lo), curPri)
+                 evn.Client, evn.Security, ss.ToUpper(pav.dt.Format(lo)), pav.price, ss.ToUpper(curDate.Format(lo)), curPri)
         }
         if(curVol >= pav.rmVol){
             curVol -= pav.rmVol

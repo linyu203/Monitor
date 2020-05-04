@@ -4,7 +4,7 @@ import (
     ev "events"
     "fmt"
     //"time"
-    //ss "strings"
+    ss "strings"
 )
 
 type Roe struct{
@@ -28,15 +28,16 @@ func (r *Roe) CheckEvent(evn *ev.Event) string{
         et := &evn.EventTime
         y1,m1,d1 := ot.Date()
         y2,m2,d2 := et.Date()
-        lo := "02Jan2006 at 15:04:05"
+        lod := "02Jan2006"
+	lot := "15:04:05"
         if !(y1 == y2 && m1 == m2 && d1 == d2) ||
            (isMkt && et.Sub(*ot).Seconds()>=300) {
             if (isMkt){
-                return fmt.Sprintf("ODE: Market order expired, order was placed on %v executed on %v",
-                       ot.Format(lo), et.Format(lo))
+                return fmt.Sprintf("ODE: Market order expired, order was placed on %v at %v executed on %v at %v",
+                       ss.ToUpper(ot.Format(lod)), ot.Format(lot), ss.ToUpper(et.Format(lod)), et.Format(lot))
             } else {
-                return fmt.Sprintf("ODE: Limit order expired, order was placed on %v executed on %v",
-                       ot.Format(lo), et.Format(lo))
+                return fmt.Sprintf("ODE: Limit order expired, order was placed on %v at %v executed on %v at %v",
+                       ss.ToUpper(ot.Format(lod)), ot.Format(lot), ss.ToUpper(et.Format(lod)), et.Format(lot))
             }
         }
     }

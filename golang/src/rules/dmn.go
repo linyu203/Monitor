@@ -23,11 +23,11 @@ func (his *hisVolList)increment(vol int){
 }
 func (his *hisVolList)update(){
     if his.curVolume == 0 {
-        return 
+        return
     }
     if len(his.qhisVolume) == 4{
         his.totalVolume -= his.qhisVolume[0]
-        his.qhisVolume = [1:]
+        his.qhisVolume = his.qhisVolume[1:]
     }
     his.totalVolume += his.curVolume
     his.qhisVolume = append(his.qhisVolume,his.curVolume)
@@ -38,41 +38,42 @@ func (his *hisVolList)getAverage()(tVol, cnt int){
     tVol = his.totalVolume
     return
 }
-type Rsfp struct{
+type Rdmn struct{
     dailyVolume map[string]*int
     hisVolume map[string]*hisVolList
-    curY,curM,curD int
+    curY,curD int
+    curM time.Month
 }
 func getDailyKey(evn *ev.Event)string{
     return evn.Broker + "|" + evn.Security
 }
-func (r *Rsfp)Rupdate(nd * time.Time){
+func (r *Rdmn)Rupdate(nd * time.Time){
     y,m,d := nd.Date()
-    if curD == d && curM == m && curY == y {
+    if r.curD == d && r.curM == m && r.curY == y {
         return
     }
-    curY = y
-    curM = m
-    curD = d
-    dailyVolume.Clear()
-    for _,v := range r.hisVolList {
+    r.curY = y
+    r.curM = m
+    r.curD = d
+    r.dailyVolume = make(map[string]*int)
+    for _,v := range r.hisVolume {
         v.update()
     }
 }
-func InitRsfp()Rule{
-    rsfp := Rsfp{}
-    rsfp.dailyVolume = make(map[string]*int)
-    rsfp.hisVolume = make(map[string]*hisVolList)
-    return &rsfp
+func InitRdmn()Rule{
+    rdmn := Rdmn{}
+    rdmn.dailyVolume = make(map[string]*int)
+    rdmn.hisVolume = make(map[string]*hisVolList)
+    return &rdmn
 }
 
-func (r *Rsfp) CheckEvent(evn *ev.Event) (sr string){
+func (r *Rdmn) CheckEvent(evn *ev.Event) (sr string){
     if evn.EventType != ev.EVENT_EXECUTE {
         return
     }
     r.Rupdate(&evn.EventTime)
     nVol := evn.Volume
-    key := r.getDailyKey(evn)
+    key := getDailyKey(evn)
     daVol,ok := r.dailyVolume[key]
     if !ok {
         r.dailyVolume[key] = &nVol
@@ -80,16 +81,16 @@ func (r *Rsfp) CheckEvent(evn *ev.Event) (sr string){
     } else {
         *daVol += nVol
     }
-    hiVol,ok := r.hisVolume[evn.Security]
+    hisVol,ok := r.hisVolume[evn.Security]
     if !ok {
         hisVol = makeHisVolList()
         r.hisVolume[evn.Security] = hisVol
     }
     hisVol.increment(evn.Volume)
-    tlVol, cnt = hisVol.getAverage()
-    if cnt > 0 && *daVol * cnt > 1.5 * tlVol {
-        sr = fmt.Sprintf("D M N: %v has executed over 50% of the average volume for '%v', the total volume %v, the average is %.2f",
-             evn.Broker, evn.Security, *daVol, tlVol/cnt)
+    tlVol, cnt := hisVol.getAverage()
+    if cnt > 0 && float64(*daVol * cnt) > float64(1.5 * float64(tlVol)) {
+        sr = fmt.Sprintf("D M N: %v has executed over 50%% of the average volume for '%v', the total volume %v, the average is %.2f",
+             evn.Broker, evn.Security, *daVol, (float64(tlVol))/(float64(cnt)))
     }
     return
 }

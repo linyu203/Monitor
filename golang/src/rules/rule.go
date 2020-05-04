@@ -18,7 +18,7 @@ func InitAllRules() []Rule{
     rules = append(rules,InitRoe())
     rules = append(rules,InitRsfp())
     rules = append(rules,InitRap())
-
+    rules = append(rules,InitRdmn())
     return rules
 }
 
