@@ -18,25 +18,25 @@ func getDateTime(line string)(tm.Time,bool){
     return t,true
 }
 
-func ParseLine(line string)(ev.Event,bool){
+func ParseLine(line string)(en ev.Event,r bool){
     vs := ss.Split(line,"|")
     if len(vs) == 0 {
-        return ev.Event{},false
+        return
     }
     /*for _,s := range vs {
         fmt.Println(s)
     }*/
     if vs[0] == "ORDER" || vs[0] == "EXECUTE" {
     if len(vs) != 10{
-        return ev.Event{},false
+        return
     }
     oid,err := sc.Atoi(vs[1])
     if err != nil {
-        return ev.Event{},false
+        return
     }
     dt,br := getDateTime(vs[2]+"T"+vs[3])
     if br == false {
-            return ev.Event{},false
+            return
     }
     ib :=  "BUY" ==  vs[6]
     vol,_ := sc.Atoi(vs[8])
@@ -44,27 +44,27 @@ func ParseLine(line string)(ev.Event,bool){
     if vs[9] != "MKT" {
         tpri,err := sc.ParseFloat(vs[9],64)
         if err != nil {
-            return ev.Event{},false
+            return
         }
         pri = tpri
     }
     if vs[0] == "EXECUTE" {
-        return ev.InitExecute(oid,&dt,vs[4],vs[5],ib,vs[7],vol,pri)
+        en,r = ev.InitExecute(oid,&dt,vs[4],vs[5],ib,vs[7],vol,pri)
     } else {
-        return ev.InitOrder(oid,&dt,vs[4],vs[5],ib,vs[7],vol,pri)
+        en,r = ev.InitOrder(oid,&dt,vs[4],vs[5],ib,vs[7],vol,pri)
     }
     } else if vs[0] == "PRICE" {
         dt,br := getDateTime(vs[1]+"T"+vs[2])
         if br == false {
-            return ev.Event{},false
+            return
         }
         pri,err := sc.ParseFloat(vs[4],64)
         if err != nil {
-            return ev.Event{},false
+            return
         }
-        return ev.InitPrice(&dt,vs[3],pri)
+        en,r = ev.InitPrice(&dt,vs[3],pri)
     }
-    return ev.Event{},false
+    return 
 }
 
 

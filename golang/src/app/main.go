@@ -8,7 +8,7 @@ import (
 func main(){
     //fmt.Println("Monitor Project")
     args := os.Args
-    if len(args) != 2{
+    if len(args) != 2 {
         fmt.Println("to run the app: ./app <filename>")
         return 
     }
